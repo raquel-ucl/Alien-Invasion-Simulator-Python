@@ -28,35 +28,11 @@ class Town:
     self.name = name
     self.aliens_in_town = []
     self.neighbours = {}
-    # self.north = None
-    # self.east = None
-    # self.south = None
-    # self.west = None
-
-  # def neighboursAsList(self):
-  #   neighbours = []
-  #   if self.north is not None:
-  #     neighbours.append(self.north)
-  #   if self.east is not None:
-  #     neighbours.append(self.east)
-  #   if self.south is not None:
-  #     neighbours.append(self.south)
-  #   if self.west is not None:
-  #     neighbours.append(self.west)
-  #   return neighbours
 
   def __str__(self):
     string = self.name
     for key, value in self.neighbours.items():
       string += " {}={}".format(key, value.name)
-    # if self.north is not None:
-    #   string = string + " north=" + self.north.name
-    # if self.east is not None:
-    #   string = string + " east=" + self.east.name
-    # if self.south is not None:
-    #   string = string + " south=" + self.south.name
-    # if self.west is not None:
-    #   string = string + " west=" + self.west.name
     return string + "\n"
 
   def destroy(self):
@@ -71,14 +47,6 @@ class Town:
         del value.neighbours['north']
       elif key is 'west':
         del value.neighbours['east']
-    # if neighbours['north'] is not None:
-    #   neighbours['north'].south = None
-    # if neighbours['east'] is not None:
-    #   neighbours['east'].west = None
-    # if neighbours['south'] is not None:
-    #   neighbours['south'].north = None
-    # if neighbours['west'] is not None:
-    #   neighbours['west.east = None
     string = self.name + " has been destroyed by aliens "
     for alien in self.aliens_in_town:
       string += str(alien.id) + ", "
@@ -132,11 +100,6 @@ def createTownAndAddToMap(input):
     dir_town = getOrCreateTown(extractTownName(components, dir))
     if dir_town is not None:
       new_town.neighbours[dir] = dir_town
-
-  # new_town.north = getOrCreateTown(extractTownName(components, "north"))
-  # new_town.east = getOrCreateTown(extractTownName(components, "east"))
-  # new_town.south = getOrCreateTown(extractTownName(components, "south"))
-  # new_town.west = getOrCreateTown(extractTownName(components, "west"))
 
 def extractTownName(input, direction):
   for s in input:
